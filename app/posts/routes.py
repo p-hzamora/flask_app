@@ -1,5 +1,5 @@
 from app.posts import bp
-from app.extesions.extensions import db
+from app.extesions.database import db
 
 from .models.post import PostModel
 

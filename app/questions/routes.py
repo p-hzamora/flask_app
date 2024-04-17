@@ -1,5 +1,5 @@
 from app.questions import bp
-from app.extesions.extensions import db
+from app.extesions.database import db
 
 from .models.user import ClientModel
 

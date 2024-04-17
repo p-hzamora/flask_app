@@ -1,9 +1,8 @@
-
-from app.extesions.extensions import AbstractValidator
-from app.extesions.extensions import IRepositoryBase
-from app.extesions.extensions import ModelBase
-from app.extesions.extensions import Table
-from app.extesions.extensions import ColumnInfo
+from app.extesions import AbstractValidator
+from app.extesions import IRepositoryBase
+from app.extesions import ModelBase
+from app.extesions import Table
+from app.extesions import Column
 
 
 class Post(Table):
