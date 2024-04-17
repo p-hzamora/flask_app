@@ -17,10 +17,17 @@ def submit_answer():
         username = request.form["username"].strip()
         password = request.form["password"].strip()
 
-        user = ClientModel(db).filter_by(lambda x: x.name, username).filter_by(lambda x: x.password, password).get(flavour=dict)
+        user = (
+            ClientModel(db)
+            .filter_by(lambda x: x.name, username)
+            .filter_by(lambda x: x.password, password)
+            .get(flavour=dict)
+        )
 
         if not user:
-            return jsonify({"status": False, "error_mssg": "usuario o contraseña incorrectos"}), 404
+            return jsonify(
+                {"status": False, "error_mssg": "usuario o contraseña incorrectos"}
+            ), 404
         return jsonify(user)
     abort(405)
 

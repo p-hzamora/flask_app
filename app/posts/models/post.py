@@ -14,9 +14,9 @@ class Post(Table):
         title,
         content,
     ) -> None:
-        self._id = ColumnInfo("id", id, is_primary_key=True)
-        self._title = ColumnInfo("title", title)
-        self._content = ColumnInfo("content", content)
+        self._id = Column("id", id, is_primary_key=True)
+        self._title = Column("title", title)
+        self._content = Column("content", content)
 
     @property
     def id(self) -> int:
@@ -52,7 +52,9 @@ class PostModelValidation(AbstractValidator[Post]):
     def __init__(self) -> None:
         super().__init__()
         self.rule_for(lambda x: x.id).not_null().must(lambda x: isinstance(x, int))
-        self.rule_for(lambda x: x.title).must(lambda x: isinstance(x, str)).max_length(150)
+        self.rule_for(lambda x: x.title).must(lambda x: isinstance(x, str)).max_length(
+            150
+        )
         self.rule_for(lambda x: x.content).must(lambda x: isinstance(x, str))
 
 

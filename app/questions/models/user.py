@@ -14,9 +14,9 @@ class Client(Table):
         name,
         password,
     ) -> None:
-        self._id = ColumnInfo("id", id, is_primary_key=True)
-        self._name = ColumnInfo("name", name)
-        self._password = ColumnInfo("password", password)
+        self._id = Column("id", id, is_primary_key=True)
+        self._name = Column("name", name)
+        self._password = Column("password", password)
 
     @property
     def id(self) -> type:
@@ -41,6 +41,7 @@ class Client(Table):
     @password.setter
     def password(self, value) -> type:
         self._password.column_value = value
+
 
 class ClientModel(ModelBase[Client]):
     def __init__(self, repository: IRepositoryBase):
