@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <span class="title">
+        <h1>{% block title %} Consulta de usuarios en base de datos {% endblock %}</h1>
+    </span>
+    <div class="questions">
+        <h2>Consulta</h2>
+
+        <div class="question">
+            <div class="new-question">
+                <!-- <form action="{{ url_for('posts.index') }}" method="post"> -->
+                <form action="{{ url_for('questions.submit_answer') }}" method="post">
+                    <p>
+                        <textarea id="q-username"
+                                name="username"
+                                placeholder="Usuario"
+                                cols="30" rows="3"></textarea>
+                    </p>
+                    <textarea id="q-password"
+                            name="password"
+                            placeholder="Contraseña"
+                            cols="30" rows="3"></textarea>
+                    <p><input type="submit"></p>
+                </form>
+            </div>
+            <div class="questions-list">
+                {% for r in response %}
+                    <div class="question">
+                        <h4>{{ r.name }}</h4>
+                        <p>{{ r.password }}</p>
+                        <hr>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
