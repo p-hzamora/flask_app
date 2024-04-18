@@ -14,9 +14,9 @@ class Client(Table):
         name,
         password,
     ) -> None:
-        self._id = Column("id", id, is_primary_key=True)
-        self._name = Column("name", name)
-        self._password = Column("password", password)
+        self._id = Column(id, is_primary_key=True)
+        self._name = Column(name)
+        self._password = Column(password)
 
     @property
     def id(self) -> type:

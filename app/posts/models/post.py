@@ -14,9 +14,9 @@ class Post(Table):
         title,
         content,
     ) -> None:
-        self._id = Column("id", id, is_primary_key=True)
-        self._title = Column("title", title)
-        self._content = Column("content", content)
+        self._id = Column(id, is_primary_key=True)
+        self._title = Column(title)
+        self._content = Column(content)
 
     @property
     def id(self) -> int:
