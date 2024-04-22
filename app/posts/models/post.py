@@ -1,11 +1,8 @@
 from app.extesions import AbstractValidator
-from app.extesions import IRepositoryBase
-from app.extesions import ModelBase
-from app.extesions import Table
-from app.extesions import Column
+from app.extesions import db
 
 
-class Post(Table):
+class Post(db.Table):
     __table_name__ = "posts"
 
     def __init__(
@@ -14,9 +11,9 @@ class Post(Table):
         title,
         content,
     ) -> None:
-        self._id = Column(id, is_primary_key=True)
-        self._title = Column(title)
-        self._content = Column(content)
+        self._id = db.Column(db.nameof(id),id, is_primary_key=True)
+        self._title = db.Column(db.nameof(title),title)
+        self._content = db.Column(db.nameof(content),content)
 
     @property
     def id(self) -> int:
@@ -43,8 +40,8 @@ class Post(Table):
         self._content.column_value = value
 
 
-class PostModel(ModelBase[Post]):
-    def __init__(self, repository: IRepositoryBase):
+class PostModel(db.ModelBase[Post]):
+    def __init__(self, repository: db.IRepositoryBase):
         super().__init__(Post, repository=repository)
 
 

@@ -1,11 +1,8 @@
 from app.extesions import AbstractValidator
-from app.extesions import IRepositoryBase
-from app.extesions import ModelBase
-from app.extesions import Table
-from app.extesions import Column
+from app.extesions import db
 
 
-class Client(Table):
+class Client(db.Table):
     __table_name__ = "client"
 
     def __init__(
@@ -14,9 +11,9 @@ class Client(Table):
         name,
         password,
     ) -> None:
-        self._id = Column(id, is_primary_key=True)
-        self._name = Column(name)
-        self._password = Column(password)
+        self._id = db.Column(db.nameof(id), id, is_primary_key=True)
+        self._name = db.Column(db.nameof(name), name)
+        self._password = db.Column(db.nameof(password), password)
 
     @property
     def id(self) -> type:
@@ -43,8 +40,8 @@ class Client(Table):
         self._password.column_value = value
 
 
-class ClientModel(ModelBase[Client]):
-    def __init__(self, repository: IRepositoryBase):
+class ClientModel(db.ModelBase[Client]):
+    def __init__(self, repository: db.IRepositoryBase):
         super().__init__(Client, repository=repository)
 
 
@@ -52,5 +49,5 @@ class ClientValidation(AbstractValidator[Client]):
     def __init__(self) -> None:
         super().__init__()
         self.rule_for(lambda x: x.id).not_null().must(lambda x: isinstance(x, int))
-        self.rule_for(lambda x: x.title).must(lambda x: isinstance(x, str))
-        self.rule_for(lambda x: x.content).must(lambda x: isinstance(x, str))
+        self.rule_for(lambda x: x.name).must(lambda x: isinstance(x, str))
+        self.rule_for(lambda x: x.password).must(lambda x: isinstance(x, str))
