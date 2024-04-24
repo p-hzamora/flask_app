@@ -1,6 +1,6 @@
-from app.posts import bp
 from app.extesions.database import db
 
+from . import bp
 from .models.post import PostModel
 
 from flask import render_template

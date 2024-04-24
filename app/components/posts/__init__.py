@@ -2,4 +2,4 @@ from flask import Blueprint
 
 bp = Blueprint("posts", __name__, template_folder="templates")
 
-from app.posts import routes  # noqa: E402, F401
+from . import routes  # noqa: E402, F401

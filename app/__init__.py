@@ -14,9 +14,9 @@ def create_app(config_class=Config):
     # initialize Flask extension here
 
     # Register blueprints here
-    from app.main import bp as main_bp
-    from app.posts import bp as posts_bp
-    from app.questions import bp as questions_bp
+    from app.components.main import bp as main_bp
+    from app.components.posts import bp as posts_bp
+    from app.components.questions import bp as questions_bp
 
     app.register_blueprint(main_bp)
     app.register_blueprint(posts_bp, url_prefix="/posts")

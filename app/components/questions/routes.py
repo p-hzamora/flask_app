@@ -1,6 +1,6 @@
-from app.questions import bp
 from app.extesions.database import db
 
+from . import bp
 from .models.user import ClientModel
 
 from flask import render_template, request, jsonify, abort
