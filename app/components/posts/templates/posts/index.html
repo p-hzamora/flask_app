@@ -4,18 +4,18 @@
     <span class="title"><h1>{% block title %} The Posts Page {% endblock %}</h1></span>
     <div class="content">
         <h2>This is the posts Flask blueprint</h2>
-        {% for p in post %}
+        {% for city in cities %}
             <div class="post">
-                <p><b>#{{ p.id }}</b></p>
+                <p><b>city_id: #{{ city.city_id }}</b></p>
                 <p class="title">
                     <b>
                         <a href="#">
-                            {{ p.title }}
+                            {{ city.city }}
                         </a>
                     </b>
                 </p>
                 <div class="content">
-                    <p>{{ p.content }}</p>
+                    <p>last_update: {{ city.last_update }}</p>
                 </div>
                 <hr>
             </div>

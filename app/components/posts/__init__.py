@@ -1,21 +1,23 @@
 from flask import Blueprint
 from app.extesions.database import db
 
-from .models.post import PostModel
+from .models import CityModel, City
 
 from flask import render_template
 
-bp = Blueprint("posts", __name__, template_folder="templates")
-
-
-
+bp = Blueprint(
+    "posts",
+    __name__,
+    template_folder="templates",
+    static_folder="static",
+    static_url_path="/static/posts",
+)
 
 
 @bp.route("/")
 def index():
-    model = PostModel(db).all(dict)
-    print(model)
-    return render_template("posts/index.html", post=model)
+    model: list[City] = CityModel(db).select()
+    return render_template("posts/index.html", cities=model)
 
 
 @bp.route("/categories")

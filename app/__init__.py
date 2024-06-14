@@ -34,3 +34,4 @@ def create_app(config_class=Config):
 # flask run
 # open http://127.0.0.1:5000/test/
 
+create_app().run(port=5000)
