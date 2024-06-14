@@ -1,4 +1,5 @@
 from flask import Blueprint
+from flask import render_template
 
 bp = Blueprint(
     "main",
@@ -8,4 +9,6 @@ bp = Blueprint(
     static_url_path="/main/static",
 )
 
-from app.components.main import routes  # noqa: E402, F401
+@bp.route("/")
+def index():
+    return render_template("index.html")
